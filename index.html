@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#173c3c">
+  <title>The Factoring Workshop · Playtest 3.1</title>
+  <link rel="stylesheet" href="styles.css?v=31">
+</head>
+<body>
+  <header class="topbar">
+    <button class="brand" id="homeButton" aria-label="Return to workshop home">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span><small>WCA ALGEBRA 2</small><strong>The Factoring Workshop</strong></span>
+    </button>
+    <div class="status-strip">
+      <div><small>TOOLBOX</small><strong id="toolCount">1 / 10</strong></div>
+      <div><small>WORKSHOP XP</small><strong id="xpCount">120</strong></div>
+      <button class="profile-chip" aria-label="Student profile"><span>AK</span><b>Apprentice</b></button>
+    </div>
+  </header>
+
+  <main>
+    <section class="view active" id="homeView">
+      <div class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">FACTORING APPRENTICESHIP · PLAYTEST 2</p>
+          <h1>Break it down.<br><em>Build mastery.</em></h1>
+          <p class="hero-lede">Every expression has a structure. Learn which tool reveals it—and when one factorization is not yet finished.</p>
+          <div class="hero-actions">
+            <button class="primary" id="beginButton">Continue at the workbench <span>→</span></button>
+            <button class="secondary" id="toolboxButton">Open strategy toolbox</button>
+          </div>
+          <div class="legend"><span><i class="done-dot"></i> Tool earned</span><span><i class="now-dot"></i> Current bench</span><span><i class="locked-dot"></i> Locked</span></div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="blueprint">
+            <small>ACTIVE BLUEPRINT</small>
+            <div class="expression">12x³ − 18x²</div>
+            <div class="cut-line"><span>6x²</span><b></b><b></b></div>
+            <div class="pieces"><span>2x</span><span>− 3</span></div>
+            <p>factor → inspect → factor again</p>
+          </div>
+          <div class="stamp">GCF<br><b>READY</b></div>
+        </div>
+      </div>
+
+      <section class="workshop-section" id="workbench">
+        <div class="section-heading">
+          <div><p class="eyebrow">YOUR WORKBENCH</p><h2>Strategy progression</h2></div>
+          <p>Earn each tool, then choose the right one without being told.</p>
+        </div>
+        <div class="bench-grid" id="benchGrid"></div>
+      </section>
+
+      <section class="foreman-callout">
+        <div class="foreman-icon">✓</div>
+        <div><p class="eyebrow">FOREMAN'S RULE</p><h2>Factored once does not always mean factored completely.</h2><p>After every step, inspect each factor again. The final benches deliberately require more than one tool.</p></div>
+        <button id="inspectMixed">Preview mixed strategy →</button>
+      </section>
+    </section>
+
+    <section class="view" id="missionView">
+      <div class="mission-shell">
+        <aside class="mission-rail">
+          <button class="back-link" id="backToBench">← Workbench</button>
+          <p class="eyebrow" id="benchNumber">BENCH 01</p>
+          <h2 id="benchTitle">Greatest Common Factor</h2>
+          <p id="benchDescription">Remove the greatest numerical and variable factor shared by every term.</p>
+          <div class="tool-card">
+            <span class="tool-symbol" id="activeToolSymbol">⊓</span>
+            <div><small>ACTIVE TOOL</small><b id="activeToolName">GCF extractor</b></div>
+          </div>
+          <div class="skill-meter"><span><i id="missionProgress"></i></span><div><b id="masteredCount">0 mastered</b><small>3 required</small></div></div>
+          <div class="rail-note"><b>Inspection checklist</b><ul id="checklist"><li>Find the greatest number.</li><li>Use the smallest exponent.</li><li>Check every term.</li></ul></div>
+        </aside>
+
+        <article class="challenge-card">
+          <header><p class="eyebrow" id="challengeLabel">WORK ORDER 1 · ATTEMPT 1</p><span class="difficulty">FOUNDATION</span></header>
+          <h1 id="questionPrompt">Factor out the greatest common factor.</h1>
+          <div class="workpiece">
+            <small>EXPRESSION ON THE BENCH</small>
+            <div id="problemExpression">12x³ − 18x²</div>
+          </div>
+          <div class="paper-strip"><span>✎</span><p id="paperCheck"><b>Paper check:</b> Divide every term by your GCF before entering the result.</p></div>
+          <label class="answer-label" id="typedAnswerLabel">Fully factored result
+            <input id="answerInput" autocomplete="off" placeholder="Type your answer, e.g. 6x²(2x − 3)">
+          </label>
+          <div class="choice-grid hidden" id="choiceGrid"></div>
+          <div class="feedback hidden" id="feedback"></div>
+          <div class="challenge-actions">
+            <button class="secondary" id="hintButton">Use a clue</button>
+            <button class="primary" id="checkButton">Inspect my work</button>
+            <button class="primary hidden" id="nextButton">Next work order →</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="view" id="strategyView">
+      <div class="strategy-shell">
+        <button class="back-link" id="strategyBack">← Workbench</button>
+        <p class="eyebrow">MIXED STRATEGY PREVIEW</p>
+        <h1>Before touching the expression,<br>choose your first tool.</h1>
+        <div class="strategy-problem">6x³ − 24x</div>
+        <p class="strategy-prompt">What should you do first?</p>
+        <div class="strategy-options">
+          <button data-choice="gcf"><span>⊓</span><b>Remove the GCF</b><small>Look for a factor shared by every term.</small></button>
+          <button data-choice="dos"><span>□</span><b>Difference of squares</b><small>Look for two perfect squares and subtraction.</small></button>
+          <button data-choice="group"><span>⋮</span><b>Group the terms</b><small>Pair four terms to reveal a common binomial.</small></button>
+        </div>
+        <div class="strategy-feedback hidden" id="strategyFeedback"></div>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="toolboxDialog">
+    <button class="dialog-close" id="closeToolbox" aria-label="Close toolbox">×</button>
+    <p class="eyebrow">STRATEGY TOOLBOX</p>
+    <h2>Tools are earned through mastery.</h2>
+    <div class="toolbox-list" id="toolboxList"></div>
+  </dialog>
+
+  <dialog id="completionDialog">
+    <div class="completion-badge" id="completionBadge">⊓</div>
+    <p class="eyebrow">TOOL EARNED</p>
+    <h2 id="completionTitle">GCF Extractor</h2>
+    <p id="completionText">You completed three work orders independently. This tool is now available in mixed-strategy challenges.</p>
+    <div class="completion-actions">
+      <button class="primary" id="completionNext">Begin next bench →</button>
+      <button class="secondary" id="completionPractice">Keep practicing</button>
+      <button class="secondary" id="completionHome">Return to workbench</button>
+    </div>
+  </dialog>
+
+  <footer>Factoring Workshop · Playtest 3.1 · Progress saves in this browser</footer>
+  <script src="app.js?v=31"></script>
+</body>
+</html>
